@@ -61,7 +61,7 @@ StarWars = (function() {
     // Reset the animation and shows the start screen
     $(this.audio).bind('ended', $.proxy(function() {
       this.audio.currentTime = 0;
-      this.reset();
+      window.location.replace("game.html");
     }, this));
   }
   
