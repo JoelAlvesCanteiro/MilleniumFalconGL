@@ -43,6 +43,7 @@ StarWars = (function() {
     
     // Start the animation
     this.start = this.el.find('.start');
+    this.play = this.el.find('.play');
     
     // The animation wrapper
     this.animation = this.el.find('.animation');
@@ -51,7 +52,7 @@ StarWars = (function() {
     this.reset();
 
     // Start the animation on click
-    this.start.bind('click', $.proxy(function() {
+    this.play.bind('click', $.proxy(function() {
       this.start.hide();
       this.audio.play();
       this.el.append(this.animation);
@@ -80,3 +81,6 @@ StarWars = (function() {
 new StarWars({
   el : '.starwars'
 });
+
+
+
