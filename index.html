@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="assets/css/main.css">
 	<title>Project</title>
 </head>
 <body>
+  	<canvas></canvas>
 <article class="starwars">
   <audio preload="auto">
     <source src="http://s.cdpn.io/1202/Star_Wars_original_opening_crawl_1977.ogg" type="audio/ogg" />
@@ -15,29 +16,30 @@
   <section class="start">
   	<h1>MILLENIUM FALCON'S JOURNEY : A STAR WARS STORY</h1>
     <p>
-    	<span>Jouer</span>
+    	<span class="play">Jouer</span>
     </p>
       <br>
+   <p>
+      <span class="name">Remake by Alves Canteiro Joel and Mattieu Vendeville</span>
+    </p>
     
   </section>
-   <p>
-      <span>Remake by Alves Canteiro Joel and Mattieu Vendeville</span>
-    </p>
   <div class="animation">
+	<a href="game.html" class="skip">Skip</a>
     
   <section class="intro">
-    A long time ago, in a galaxy far,<br> far away....
+  	Il y a longtemps, dans une galaxie lointaine, très lointaine....
   </section>
     
   <section class="titles">
     <div contenteditable="true" spellcheck="false">
-      <h2>MILLENIUM FALCON'S JOURNEY</h2>
+      <h2 id="center">MILLENIUM FALCON'S JOURNEY</h2>
       <p>
-        Vous êtes le pilote du célèbre Faucon Millenium et tentez de mettre hors d'état de nuire un destroyer impérial, survivez aux ennemis et obstacles et affrontez votre destin.
+        Vous êtes le pilote du célèbre Faucon Millenium et tentez de mettre hors d'état de nuire un destroyer impérial. Survivez aux ennemis et obstacles et affrontez votre destin.
       </p>
 
       <p>
-        Shoot'em up dans lequel le vaisseau pourra esquiver ou éliminer ses ennemis et obstacles mais devra impérativement éliminer le boss. Le joueur se déplacera avec QD ou les flèches directionnelles et tirera avec espace. 
+        Shoot'em up dans lequel le vaisseau pourra esquiver ou éliminer ses ennemis et obstacles mais, il devra impérativement éliminer le boss. Le joueur se déplacera avec QD ou les flèches directionnelles et tirera avec espace. 
       </p>
       </div>
   </section>
@@ -135,6 +137,7 @@
   </section>
   </div>
 </article>
+<script src="assets/js/canvas.js"></script>
 <script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/container.js"></script>
 </body>

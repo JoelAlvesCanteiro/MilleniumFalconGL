@@ -43,6 +43,7 @@ StarWars = (function() {
     
     // Start the animation
     this.start = this.el.find('.start');
+    this.play = this.el.find('.play');
     
     // The animation wrapper
     this.animation = this.el.find('.animation');
@@ -51,7 +52,7 @@ StarWars = (function() {
     this.reset();
 
     // Start the animation on click
-    this.start.bind('click', $.proxy(function() {
+    this.play.bind('click', $.proxy(function() {
       this.start.hide();
       this.audio.play();
       this.el.append(this.animation);
@@ -60,7 +61,7 @@ StarWars = (function() {
     // Reset the animation and shows the start screen
     $(this.audio).bind('ended', $.proxy(function() {
       this.audio.currentTime = 0;
-      this.reset();
+      window.location.replace("game.html");
     }, this));
   }
   
@@ -80,3 +81,6 @@ StarWars = (function() {
 new StarWars({
   el : '.starwars'
 });
+
+
+

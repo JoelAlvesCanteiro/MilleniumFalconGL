@@ -5,7 +5,7 @@ body {
   height: 100%;
   font: 700 1em "News Cycle", sans-serif;
   letter-spacing: .15em;
-  color: #ff6;
+  color: #ffd803;
   background: #000;
   overflow: hidden;
   margin: 0;
@@ -22,8 +22,12 @@ body {
   width: 14em;
   margin: -4em 0 0 -7em;
   text-align: center;
+}
+
+.starwars .play {
   cursor: pointer;
 }
+
 .starwars .start span {
   color: #4bd5ee;
 }
@@ -167,5 +171,153 @@ body {
   100% {
     top: 20%;
     opacity: 0;
+  }
+}
+
+#center{
+  text-align: center;
+}
+
+
+
+/* SKIP BUTTON */
+.skip{
+  position: absolute;
+  bottom: 7%;
+  right: 7%;
+
+  padding: 1% 2%;
+  font-size: 1.7em;
+
+  outline: none;
+  color: 
+}
+
+
+
+
+/* ANIMATE BACKGROUND */
+
+canvas {
+  display: block;
+   -moz-opacity:0.2; /* For older FF versions */
+   -khtml-opacity:0.2;
+   opacity:0.2;
+   filter:alpha(opacity=20);
+}
+
+body {
+ background:#000 url('https://s22.postimg.org/rwc2acgj5/image.jpg');
+}
+
+/* NEON TYPO */
+
+#container {
+  width: 500px;
+  margin: auto;
+}
+
+/*Neon*/
+
+.play {
+  text-decoration: none;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.play {
+  color: #4bd5ee;
+}
+
+.play:hover {
+  -webkit-animation: neon2 1.5s ease-in-out infinite alternate;
+  -moz-animation: neon2 1.5s ease-in-out infinite alternate;
+  animation: neon2 1.5s ease-in-out infinite alternate;
+}
+
+.skip {
+  text-decoration: none;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.skip {
+  color: #ffd803;
+}
+
+.skip:hover {
+  -webkit-animation: neon3 1.5s ease-in-out infinite alternate;
+  -moz-animation: neon3 1.5s ease-in-out infinite alternate;
+  animation: neon3 1.5s ease-in-out infinite alternate;
+}
+/*glow for webkit*/
+
+@-webkit-keyframes neon2 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #228DFF, 0 0 70px #228DFF, 0 0 80px #228DFF, 0 0 100px #228DFF, 0 0 150px #228DFF;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #228DFF, 0 0 35px #228DFF, 0 0 40px #228DFF, 0 0 50px #228DFF, 0 0 75px #228DFF;
+  }
+}
+
+@-webkit-keyframes neon3 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ffd803, 0 0 70px #ffd803, 0 0 80px #ffd803, 0 0 100px #ffd803, 0 0 150px #ffd803;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ffd803, 0 0 35px #ffd803, 0 0 40px #ffd803, 0 0 50px #ffd803, 0 0 75px #ffd803;
+  }
+}
+/*glow for mozilla*/
+
+@-moz-keyframes neon2 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #4bd5ee, 0 0 70px #4bd5ee, 0 0 80px #4bd5ee, 0 0 100px #4bd5ee, 0 0 150px #4bd5ee;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #4bd5ee, 0 0 35px #4bd5ee, 0 0 40px #4bd5ee, 0 0 50px #4bd5ee, 0 0 75px #4bd5ee;
+  }
+}
+
+@-moz-keyframes neon3 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ffd803, 0 0 70px #ffd803, 0 0 80px #ffd803, 0 0 100px #ffd803, 0 0 150px #ffd803;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ffd803, 0 0 35px #ffd803, 0 0 40px #ffd803, 0 0 50px #ffd803, 0 0 75px #ffd803;
+  }
+}
+
+/*glow*/
+
+@keyframes neon2 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #4bd5ee, 0 0 70px #4bd5ee, 0 0 80px #4bd5ee, 0 0 100px #4bd5ee, 0 0 150px #4bd5ee;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #4bd5ee, 0 0 35px #4bd5ee, 0 0 40px #4bd5ee, 0 0 50px #4bd5ee, 0 0 75px #4bd5ee;
+  }
+}
+
+@keyframes neon3 {
+  from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #ffd803, 0 0 70px #ffd803, 0 0 80px #ffd803, 0 0 100px #ffd803, 0 0 150px #ffd803;
+  }
+  to {
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ffd803, 0 0 35px #ffd803, 0 0 40px #ffd803, 0 0 50px #ffd803, 0 0 75px #ffd803;
+  }
+}
+
+/*REEEEEEEEEEESPONSIVE*/
+
+@media (max-width: 650px) {
+  #container {
+    width: 100%;
+  }
+  p {
+    font-size: 3.5em;
   }
 }
