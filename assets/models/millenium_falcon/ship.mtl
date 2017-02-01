@@ -1,5 +1,5 @@
 # 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
-# File Created: 16.01.2017 13:56:44
+# File Created: 01.02.2017 16:01:22
 
 newmtl Material__1
 	Ns 10.000000
@@ -12,8 +12,8 @@ newmtl Material__1
 	Kd 0.588000 0.588000 0.588000
 	Ks 0.000000 0.000000 0.000000
 	Ke 0.000000 0.000000 0.000000
-	map_Ka C:\Users\cante\Downloads\RenderTop.jpg6c31abc5-2b5c-4578-a60e-29f82a1da298Original.jpg
-	map_Kd C:\Users\cante\Downloads\RenderTop.jpg6c31abc5-2b5c-4578-a60e-29f82a1da298Original.jpg
+	map_Ka maps\RenderTop.jpg6c31abc5-2b5c-4578-a60e-29f82a1da298Original.jpg
+	map_Kd maps\RenderTop.jpg6c31abc5-2b5c-4578-a60e-29f82a1da298Original.jpg
 
 newmtl 09___Default
 	Ns 9.999999
@@ -26,5 +26,5 @@ newmtl 09___Default
 	Kd 0.588235 0.588235 0.588235
 	Ks 0.261000 0.261000 0.261000
 	Ke 0.000000 0.000000 0.000000
-	map_Ka C:\Users\cante\Desktop\millenium falcon project\image\map bidule.jpg
-	map_Kd C:\Users\cante\Desktop\millenium falcon project\image\map bidule.jpg
+	map_Ka maps\map bidule.jpg
+	map_Kd maps\map bidule.jpg
