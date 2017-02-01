@@ -1,0 +1,58 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# File Created: 01.02.2017 16:14:50
+
+newmtl Material__37
+	Ns 6.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588235 0.588235 0.588235
+	Kd 0.588235 0.588235 0.588235
+	Ks 1.116000 1.116000 1.116000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka maps\unwrap_corp_ok.jpg
+	map_Kd maps\unwrap_corp_ok.jpg
+
+newmtl 02___Default
+	Ns 6.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.690196 0.690196 0.690196
+	Kd 0.690196 0.690196 0.690196
+	Ks 1.082353 1.190588 1.195294
+	Ke 0.000000 0.000000 0.000000
+	map_Ka maps\gris_xwing.jpg
+	map_Kd maps\gris_xwing.jpg
+
+newmtl Aile
+	Ns 6.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588235 0.588235 0.588235
+	Kd 0.588235 0.588235 0.588235
+	Ks 1.134000 1.134000 1.134000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka maps\Aile_ok.jpg
+	map_Kd maps\Aile_ok.jpg
+
+newmtl 03___Default
+	Ns 9.999999
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588235 0.588235 0.588235
+	Kd 0.588235 0.588235 0.588235
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_bump maps\NormalMap_reacteur_ok.png
+	bump maps\NormalMap_reacteur_ok.png
