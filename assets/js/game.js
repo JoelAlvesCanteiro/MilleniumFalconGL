@@ -96,6 +96,20 @@ function init() {
 		}, onProgress, onError );
 	});
 
+	// var geometry = new THREE.ConeBufferGeometry( 1, 5, 3.5 );
+	// var material = new THREE.MeshBasicMaterial( {color: 0xff00000, wireframe: true} );
+	// var cone = new THREE.Mesh( geometry, material );
+
+
+	
+
+	// cone.rotation.x = 62;
+	// cone.rotation.y = 600;
+
+	// cone.name = "tir";
+
+	// scene.add( cone );
+
 
 	//
 	renderer = new THREE.WebGLRenderer();
@@ -108,17 +122,30 @@ function init() {
 
 function move() {
 	var get = scene.getObjectByName( "destroyer" );
+	var tir = scene.getObjectByName( "tir" );
 
 
 	if ( keyboard.gauche === true) {
-		console.log(get);
 		get.position.x -= 1 * ship.speed;
-		// get.rotation.y -= 0.01;
+		get.rotation.y -= 0.01;
 	}
 
 	if (keyboard.droite === true) {
 		get.position.x += 1 * ship.speed;
-		// get.rotation.y += 0.01;
+		get.rotation.y += 0.01;
+	}
+
+	if (keyboard.haut === true) {
+		get.rotation.z -= 0.2;
+	}
+
+	if (keyboard.bas === true) {
+		var limite = -43.7;
+
+		while(get.rotation.x < limite){
+			get.rotation.x += 0.1;
+			break;
+		}
 	}
 
 }
