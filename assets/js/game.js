@@ -96,6 +96,34 @@ function init() {
 		}, onProgress, onError );
 	});
 
+	var mtlLoader = new THREE.MTLLoader();
+    mtlLoader.setPath( 'assets/models/destroyer/' );
+    mtlLoader.load( 'ship.mtl', function( materials ) {
+    
+        materials.preload();
+
+        var objLoader = new THREE.OBJLoader();
+        objLoader.setMaterials( materials );
+        objLoader.setPath( 'assets/models/destroyer/' );
+        objLoader.load( 'ship.obj', function ( object ) {
+
+            object.name = "destroyer";
+
+            object.position.y = 0;
+            scene.add( object );
+
+
+            object.position.y = 10;
+            object.position.z = 60;
+            object.position.x = 20;
+
+            object.rotation.x = -50;
+            object.rotation.y = 600;
+
+
+        }, onProgress, onError );
+    });
+
 	// var geometry = new THREE.ConeBufferGeometry( 1, 5, 3.5 );
 	// var material = new THREE.MeshBasicMaterial( {color: 0xff00000, wireframe: true} );
 	// var cone = new THREE.Mesh( geometry, material );
