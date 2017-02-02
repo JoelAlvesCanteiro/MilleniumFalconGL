@@ -237,6 +237,7 @@ body {
 }
 
 .skip {
+  display: none;
   text-decoration: none;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
