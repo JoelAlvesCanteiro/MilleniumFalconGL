@@ -13,7 +13,7 @@ body {
 
 .starwars section {
   position: absolute;
-  top: 45%;
+  top: 35%;
   left: 50%;
   z-index: 1;
 }
@@ -24,7 +24,7 @@ body {
   text-align: center;
 }
 
-.starwars .play {
+.starwars .play, .menu{
   cursor: pointer;
 }
 
@@ -219,18 +219,18 @@ body {
 
 /*Neon*/
 
-.play {
+.play, .menu {
   text-decoration: none;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   transition: all 0.5s;
 }
 
-.play {
+.play, .menu {
   color: #4bd5ee;
 }
 
-.play:hover {
+.play:hover, .menu:hover {
   -webkit-animation: neon2 1.5s ease-in-out infinite alternate;
   -moz-animation: neon2 1.5s ease-in-out infinite alternate;
   animation: neon2 1.5s ease-in-out infinite alternate;
