@@ -113,7 +113,7 @@ function init() {
 		}, onProgress, onError );
 	});
 
-	
+
 	var mtlLoader = new THREE.MTLLoader();
     mtlLoader.setPath( 'assets/models/destroyer/' );
     mtlLoader.load( 'ship.mtl', function( materials ) {
@@ -219,7 +219,7 @@ function move() {
 
 	}
 
-	if (ship.flip_r === true) {		
+	if (ship.flip_r === true) { 		
 		var limite_r = 6;
 
 		ship.flip_l = false;
@@ -262,7 +262,12 @@ function tir(){
 		console.log(ship.cooldown);
 
 	if (keyboard.espace === true && Date.now() - ship.cooldown > ship.cadenceTir) {
-		
+		keyboard.espace = false;
+		var audio = document.createElement('audio');
+  		var source = document.createElement('source');
+  		source.src = '/assets/music/Faucon laser 2.mp3';
+  		audio.appendChild(source);
+  		audio.play();
 		var geometry = new THREE.ConeBufferGeometry( 0.2, 25, 3.5 );
 		var material = new THREE.MeshBasicMaterial( {color: 0x70001B} );
 		var cone = new THREE.Mesh( geometry, material );
