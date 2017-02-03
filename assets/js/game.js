@@ -38,6 +38,7 @@ window.document.addEventListener('keyup',function(e){
 }, false);
 
 var ship = {
+	vie: 1000,
 	x: 0,
 	y: 0,
 	speed: 1,
@@ -50,6 +51,7 @@ var ship = {
 }
 
 var destroyer = {
+	vie: 2000,
 	x: 0,
 	y: 0,
 	speed: 1,
@@ -183,8 +185,6 @@ function move() {
 	if (get.position.x < border && get.position.x > -border) {
 
 		if ( keyboard.gauche === true) {
-
-			console.log(get);
 			get.position.x -= 1 * ship.speed;
 			// get.rotation.y -= 0.01;
 		}
@@ -195,12 +195,10 @@ function move() {
 		}
 
 		if (keyboard.q === true) {
-			console.log(get.rotation);
 			ship.flip_l = true;
 		}
 
 		if (keyboard.d === true) {
-			console.log(get.rotation);
 			ship.flip_r = true;
 		}
 
@@ -270,7 +268,6 @@ function tir(){
 
 	var get = scene.getObjectByName( "main" );
 
-		console.log(ship.cooldown);
 
 	if (keyboard.espace === true && Date.now() - ship.cooldown > ship.cadenceTir) {
 		
@@ -305,17 +302,32 @@ function moveTir(){
 
 	for (var i = ship.tir.length - 1; i >= 0; i--) {
 
-		let tir = ship.tir;
+		var get = scene.getObjectByName( "destroyer" );
 
-		tir[i].name = "tir"+[i];
+		var tirs = ship.tir;
+		let laser = ship.tir[i];
 
-		var shoot = scene.getObjectByName( tir[i].name );
+		laser.name = "tir"+[i];
 
-		tir[i].position.z -= 10;
-		tir[i].position.y += 1.5;
+		laser.position.z -= 10;
+		laser.position.y += 1.5;
 
 
-		scene.add( tir[i] );
+		scene.add( laser );
+
+
+		if (laser.position.y > get.position.y - 25 && laser.position.y < get.position.y + 25) {
+
+			
+			if (laser.position.x > get.position.x - 1000&& laser.position.x < get.position.x + 1000) {
+
+				destroyer.vie -= 1;
+
+			}
+
+		}
+
+		
 	}
 
 }
@@ -335,31 +347,15 @@ function tirDestroyer(){
 	  		audio.volume = 0.2;
 		var geometry = new THREE.ConeBufferGeometry( 0.2, 25, 3.5 );
 		var material = new THREE.MeshBasicMaterial( {color: 0x1DB000} );
-		var cone1 = new THREE.Mesh( geometry, material );
-		var cone2 = new THREE.Mesh( geometry, material );
-		var cone3 = new THREE.Mesh( geometry, material );
+		var cone = new THREE.Mesh( geometry, material );
 
-		cone1.position.x = get.position.x + (Math.floor((Math.random() * 50) - 50));
-		cone1.position.y = get.position.y + 5;
-		cone1.rotation.x = 250;
-		cone1.rotation.y = 0;
-		cone1.rotation.z = 0;
+		cone.position.x = get.position.x + (Math.floor((Math.random() * 50) - 50));
+		cone.position.y = get.position.y + 5;
+		cone.rotation.x = 250;
+		cone.rotation.y = 0;
+		cone.rotation.z = 0;
 
-		cone2.position.x = get.position.x + (Math.floor((Math.random() * 50) - 50));
-		cone2.position.y = get.position.y + 5;
-		cone2.rotation.x = 250;
-		cone2.rotation.y = 0;
-		cone2.rotation.z = 0;
-
-		cone3.position.x = get.position.x + (Math.floor((Math.random() * 50) - 50));
-		cone3.position.y = get.position.y + 5;
-		cone3.rotation.x = 250;
-		cone3.rotation.y = 0;
-		cone3.rotation.z = 0;
-
-		destroyer.tir.push(cone1);
-		destroyer.tir.push(cone2);
-		destroyer.tir.push(cone3);
+		destroyer.tir.push(cone);
 
 		destroyer.cooldown = Date.now();
 
@@ -376,31 +372,28 @@ function moveTirDestroyer(){
 
 		var get = scene.getObjectByName( "main" );
 
-		let tir1 = destroyer.tir[i];
-		let tir2 = destroyer.tir[i-1];
-		let tir3 = destroyer.tir[i-2];
+		var shoot = destroyer.tir;
+		let tir = destroyer.tir[i];
 
-		tir1.name = "tir"+[i];
-		tir2.name = "tir"+[i-1];
-		tir3.name = "tir"+[i-2];
+		border = game.height;
 
-		var shoot1 = scene.getObjectByName( tir1.name );
-		var shoot2 = scene.getObjectByName( tir2.name );
-		var shoot3 = scene.getObjectByName( tir3.name );
+		tir.name = "tir"+[i];
 
-		tir1.position.z += 10;
-		tir1.position.y -= 1.5;
-
-		tir2.position.z += 10;
-		tir2.position.y -= 1.5;
-
-		tir3.position.z += 10;
-		tir3.position.y -= 1.5;
+		tir.position.z += 1;
+		tir.position.y -= 1.5;
 
 
-		scene.add( tir1 );
-		scene.add( tir2 );
-		scene.add( tir3 );
+		scene.add( tir );
+
+		if (tir.position.y > get.position.y - 25 && tir.position.y < get.position.y + 25) {
+
+			
+			if (tir.position.x > get.position.x - 10 && tir.position.x < get.position.x + 10) {
+				ship.vie -= 1;
+
+			}
+
+		}
 	}
 
 }
@@ -419,4 +412,11 @@ function animate() {
 function render() {
 	camera.lookAt( scene.position );
 	renderer.render( scene, camera );
+}
+
+
+function end() {
+	if (ship.vie <= 0 || destroyer.vie <= 0) {
+		window.location.replace('endgame.html');
+	}
 }
