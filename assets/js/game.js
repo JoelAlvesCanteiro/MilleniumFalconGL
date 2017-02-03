@@ -45,7 +45,16 @@ var ship = {
 	flip_l: false,
 	flip_r: false,
 	tir: [],
-	cadenceTir : 5000,
+	cadenceTir : 750,
+	cooldown : 0
+}
+
+var destroyer = {
+	x: 0,
+	y: 0,
+	speed: 1,
+	tir: [],
+	cadenceTir : 1000,
 	cooldown : 0
 }
 
@@ -131,7 +140,7 @@ function init() {
             scene.add( object );
 
 
-            object.position.y = 10;
+            object.position.y = 8;
             object.position.z = 60;
             object.position.x = 20;
 
@@ -174,6 +183,8 @@ function move() {
 	if (get.position.x < border && get.position.x > -border) {
 
 		if ( keyboard.gauche === true) {
+
+			console.log(get);
 			get.position.x -= 1 * ship.speed;
 			// get.rotation.y -= 0.01;
 		}
@@ -262,12 +273,13 @@ function tir(){
 		console.log(ship.cooldown);
 
 	if (keyboard.espace === true && Date.now() - ship.cooldown > ship.cadenceTir) {
-		keyboard.espace = false;
+		
 		var audio = document.createElement('audio');
   		var source = document.createElement('source');
   		source.src = '/assets/music/Faucon laser 2.mp3';
   		audio.appendChild(source);
   		audio.play();
+  		audio.volume = 0.2;
 		var geometry = new THREE.ConeBufferGeometry( 0.2, 25, 3.5 );
 		var material = new THREE.MeshBasicMaterial( {color: 0x70001B} );
 		var cone = new THREE.Mesh( geometry, material );
@@ -280,7 +292,7 @@ function tir(){
 
 		ship.tir.push(cone);
 
-		console.log(ship.tir);
+		ship.cooldown = Date.now();
 
 
 	}
@@ -308,11 +320,99 @@ function moveTir(){
 
 }
 
+
+function tirDestroyer(){
+
+	var get = scene.getObjectByName( "destroyer" );
+
+	if (Date.now() - destroyer.cooldown > destroyer.cadenceTir) {
+		
+		var audio = document.createElement('audio');
+  		var source = document.createElement('source');
+  		source.src = '/assets/music/laser.mp3';
+  		audio.appendChild(source);
+	  		audio.play();
+	  		audio.volume = 0.2;
+		var geometry = new THREE.ConeBufferGeometry( 0.2, 25, 3.5 );
+		var material = new THREE.MeshBasicMaterial( {color: 0x1DB000} );
+		var cone1 = new THREE.Mesh( geometry, material );
+		var cone2 = new THREE.Mesh( geometry, material );
+		var cone3 = new THREE.Mesh( geometry, material );
+
+		cone1.position.x = get.position.x + (Math.floor((Math.random() * 50) - 50));
+		cone1.position.y = get.position.y + 5;
+		cone1.rotation.x = 250;
+		cone1.rotation.y = 0;
+		cone1.rotation.z = 0;
+
+		cone2.position.x = get.position.x + (Math.floor((Math.random() * 50) - 50));
+		cone2.position.y = get.position.y + 5;
+		cone2.rotation.x = 250;
+		cone2.rotation.y = 0;
+		cone2.rotation.z = 0;
+
+		cone3.position.x = get.position.x + (Math.floor((Math.random() * 50) - 50));
+		cone3.position.y = get.position.y + 5;
+		cone3.rotation.x = 250;
+		cone3.rotation.y = 0;
+		cone3.rotation.z = 0;
+
+		destroyer.tir.push(cone1);
+		destroyer.tir.push(cone2);
+		destroyer.tir.push(cone3);
+
+		destroyer.cooldown = Date.now();
+
+
+	}
+
+
+
+}
+
+function moveTirDestroyer(){
+
+	for (var i = destroyer.tir.length - 1; i >= 0; i-=3) {
+
+		var get = scene.getObjectByName( "main" );
+
+		let tir1 = destroyer.tir[i];
+		let tir2 = destroyer.tir[i-1];
+		let tir3 = destroyer.tir[i-2];
+
+		tir1.name = "tir"+[i];
+		tir2.name = "tir"+[i-1];
+		tir3.name = "tir"+[i-2];
+
+		var shoot1 = scene.getObjectByName( tir1.name );
+		var shoot2 = scene.getObjectByName( tir2.name );
+		var shoot3 = scene.getObjectByName( tir3.name );
+
+		tir1.position.z += 10;
+		tir1.position.y -= 1.5;
+
+		tir2.position.z += 10;
+		tir2.position.y -= 1.5;
+
+		tir3.position.z += 10;
+		tir3.position.y -= 1.5;
+
+
+		scene.add( tir1 );
+		scene.add( tir2 );
+		scene.add( tir3 );
+	}
+
+}
+
+
 function animate() {
 	requestAnimationFrame( animate );
 	render();
 	tir();
+	tirDestroyer();
 	moveTir();
+	moveTirDestroyer();
 	move();
 }
 
